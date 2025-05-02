@@ -1,34 +1,51 @@
-A Survey: Music's Relationship with Mental Health
+🎧 Regression Model: Predicting Podcast Listening Time
 
-📊 Project Overview
+📈 Project Overview
 
-This project explores the relationship between music listening habits and mental health indicators such as anxiety, depression, OCD, and insomnia. Using survey data, I built a Power BI dashboard to visualize insights and better understand how different genres, listening frequencies, and age groups interact with mental health outcomes.
+This project focuses on developing a regression model to predict the expected listening time of a podcast episode. We explore different algorithms to understand and generalize which features (such as podcast title, episode length, number of ads, episode number, etc.) most influence a user's likelihood of listening.
 
-🛠️ Tools Used
+🧰 Tools Used
 
-    Power BI for data visualization and dashboard building
-    Python (pandas) for dataset preparation and separation
-    SQL for data cleaning transformation, and aggregation
+* Python & Pandas – For data cleaning and manipulation
+* Scikit-learn – For encoding categorical variables, scaling numerical features, and building various regression models
+* Matplotlib & Seaborn – For visualization and exploratory data analysis
 
-🧠 Project Workflow Data Preparation:
+🔎 Exploratory Data Analysis & Cleaning
 
-    Cleaned and separated raw survey data using Python (Pandas).
+* Employed matplotlib and seaborn to examine relationships between input features and the target variable
+* Used histograms, density plots, and bar charts to explore the distribution of numerical features
+* Imputed missing values using pandas and scikit-learn techniques
+* Corrected anomalous data based on its correlation with the target variable
 
-    Created SQL scripts to structure and refine the dataset further.
+🧱 Feature Engineering
 
-    Analysis: - Investigated average music listening times by age group. - Analyzed mental health scores across different music genres. -Explored the effect of rock music listening frequency on anxiety and depression. - Measured public sentiment regarding music's impact on mood. - Identified favorite music genres among participants.
+* Created new features by combining existing columns
+* Evaluated how these engineered features impacted the model’s predictive power
 
-    Visualization: - Built an interactive dashboard in Power BI. - Used bar charts, donut charts, gauges, and stacked visuals for clear storytelling.
+🧪 Data Normalization
 
-🔍 Key Insights
+* Split the dataset into training, validation, and test sets using train_test_split
+* Applied one-hot encoding to categorical variables via OneHotEncoder
+* Scaled numerical features using MinMaxScaler
 
-    Video Game Music and Jazz listeners reported the highest anxiety and depression scores.
-    Listening to Rock music very frequently correlated with slightly lower depression scores compared to rarely or never listening.
-    About 74% of participants reported that music improved their mood.
-    Rock and Pop were the most popular genres among participants.
+🧮 Model Development
 
-🚀 How to View
+* Built baseline models (mean and median predictors) to serve as performance benchmarks
+* Experimented with linear models including LinearRegression, Ridge, and Lasso
+* Leveraged tree-based models like XGBRegressor and RandomForestRegressor
+* Tuned hyperparameters using RandomizedSearchCV for optimal performance
+* Developed a custom ensemble class to combine tree-based and linear models
 
-    Head to the /PowerBI Dashboards path, either view it as a .png file, or download the .pbix file and open it using Power BI Desktop.
+✨ Key Insights
 
-The raw dataset can be found: https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results/data
+* After evaluating model performance using RMSE, we selected a tuned XGBRegressor and a basic LinearRegression model
+* These were ensembled with weights of 0.8 (XGB) and 0.2 (Linear), achieving an RMSE of 12.70 on the validation set, and 12.84 on Kaggle's test set
+* Our final model ranked within the top 25% of all participants in the Kaggle competition
+
+📂 How to Run the Project
+
+* Download the dataset from the link below
+* Update the file path in the Jupyter Notebooks
+* Run the notebook to reproduce the results
+
+🔗 Dataset: https://www.kaggle.com/competitions/playground-series-s5e4
